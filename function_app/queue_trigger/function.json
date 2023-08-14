@@ -1,0 +1,15 @@
+{
+  "scriptFile": "__init__.py",
+  "entryPoint": "main",
+  "bindings": [
+    {
+      "dataType": "string",
+      "name": "messages",
+      "cardinality": "many",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "queueName": "my_queue",
+      "connection": "API_STATUS_SERVICEBUS"
+    }
+  ]
+}
