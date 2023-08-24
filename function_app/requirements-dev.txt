@@ -1,0 +1,5 @@
+pylint
+mypy
+yapf
+flake8
+pyright
