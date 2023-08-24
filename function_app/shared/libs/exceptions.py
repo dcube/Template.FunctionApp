@@ -11,4 +11,3 @@ class ExceptionNotImplemented(Exception):
 
 class UnauthorizedException(Exception):
     """..."""
-

@@ -8,7 +8,7 @@ from .base_function import BaseFunction
 from .base_schema import BaseSchema, ServiceField
 
 
-class HttpTriggerSchema(BaseSchema):
+class HttpTriggerSampleSchema(BaseSchema):
     """..."""
     service = fields.String(required=True)
     depends_on = ServiceField(required=False, load_default=[])
@@ -22,10 +22,10 @@ class HttpTriggerSchema(BaseSchema):
             raise ValidationError(f"Service {data['service']} cannot be dependent on itself.")
 
 
-class HttpTrigger(BaseFunction):
+class HttpTriggerSample(BaseFunction):
     """..."""
 
-    schema_model: Any = HttpTriggerSchema
+    schema_model: Any = HttpTriggerSampleSchema
 
     def prepare_and_execute(self, params: Dict[str, Any]) -> str:
         """..."""
@@ -40,3 +40,5 @@ class HttpTrigger(BaseFunction):
         logging.info("service - %s", service)
         logging.info("depends_on - %s", depends_on)
         logging.info("service - %s", service)
+
+        return "test"

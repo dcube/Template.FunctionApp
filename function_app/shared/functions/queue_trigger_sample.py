@@ -59,17 +59,17 @@ class ServicesFromServiceBusMessage(fields.Field):
         return []
 
 
-class ListeQueueTriggerSchema(BaseSchema):
+class ListeQueueTriggerSampleSchema(BaseSchema):
     """..."""
 
     messages = ServiceBusMessageField(required=True)
     services = ServicesFromServiceBusMessage(required=True)
 
 
-class ListeQueueTrigger(BaseFunction):
+class ListeQueueTriggerSample(BaseFunction):
     """..."""
 
-    schema_model: Any = ListeQueueTriggerSchema
+    schema_model: Any = ListeQueueTriggerSampleSchema
 
     def prepare_and_execute(self, params: List[ServiceBusMessage]) -> None:
         """..."""
@@ -78,7 +78,8 @@ class ListeQueueTrigger(BaseFunction):
 
         self.execute(new_params["services"])
 
-    def execute(self) -> None:
+    def execute(self, service: str) -> None:
         """..."""
 
         logging.info("ListeQueueTrigger - running service")
+        logging.info("service - %s", service)

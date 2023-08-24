@@ -6,7 +6,7 @@ from typing import Any, Dict
 
 import azure.functions as func
 
-from ..shared.functions.http_trigger import HttpTrigger
+from ..shared.functions.http_trigger_sample import HttpTriggerSample
 
 
 def main(req: func.HttpRequest) -> func.HttpResponse:  # pylint: disable=unused-variable
@@ -19,10 +19,10 @@ def main(req: func.HttpRequest) -> func.HttpResponse:  # pylint: disable=unused-
 
     try:
 
-        obj_function: HttpTrigger = HttpTrigger()
+        obj_function: HttpTriggerSample = HttpTriggerSample()
         result: str = obj_function.prepare_and_execute(dict(req.params))
 
-        main_result: Dict[str, Any] = []
+        main_result: Dict[str, Any] = {}
         main_result["result"] = result
         main_result["success"] = True
         return func.HttpResponse(json.dumps(main_result), status_code=200)
